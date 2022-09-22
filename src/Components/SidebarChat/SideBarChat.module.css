@@ -4,3 +4,16 @@
     cursor: pointer;
     border-bottom: 1px solid #f6f6f6;
 }
+
+.sidebarChat:hover{
+    background-color: #ebebeb;
+}
+
+.SideBarChatInfo > h2{
+    font-style: 16px;
+    margin-bottom: 8px;
+}
+
+.SideBarChatInfo{
+    margin-left: 15px;
+}

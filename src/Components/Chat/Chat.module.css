@@ -40,15 +40,7 @@
    overflow: scroll;
 }
 
-.chatMessage{
-    position: relative;
-    font-size: 16pz;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    width: fit-content;
-    margin-bottom: 30px; 
-}
+
 
 .chatName{
     position: absolute;
@@ -63,11 +55,6 @@ margin-left: 10px;
 font-size: xx-small;
 }
 
-.chatReciever{
-    margin-left: auto;
-    background-color: #dcf8c6;
-
-}
 
 
 .chatFooter{

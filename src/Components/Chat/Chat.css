@@ -1,0 +1,15 @@
+.chatMessage{
+    position: relative;
+    font-size: 16pz;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: fit-content;
+    margin-bottom: 30px; 
+}
+
+.chatReciever{
+    margin-left: auto;
+    background-color: #dcf8c6;
+
+}

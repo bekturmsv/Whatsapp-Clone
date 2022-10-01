@@ -1,3 +1,5 @@
+
+
 .sidebarChat{
     display: flex;
     padding: 20px;
@@ -5,13 +7,21 @@
     border-bottom: 1px solid #f6f6f6;
 }
 
+a{
+    text-decoration: none !important;
+    color: black;
+}
+
 .sidebarChat:hover{
     background-color: #ebebeb;
 }
 
-.SideBarChatInfo > h2{
+.sidebarChat > 
+
+.SideBarChatInfo > span{
     font-style: 16px;
     margin-bottom: 8px;
+    font-family: 'Alkalami', serif;
 }
 
 .SideBarChatInfo{

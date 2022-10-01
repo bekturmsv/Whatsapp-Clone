@@ -4,20 +4,32 @@ import styles from './SideBarChat.module.css'
 import db from '../../firebase'
 import { Link } from 'react-router-dom';
 
-function SideBarChat  ({id, name, addNewChat})  {
+function SideBarChat({ id, name, addNewChat }) {
 
-    const [seed,setSeed] = useState("");
-    
+    const [seed, setSeed] = useState("");
+    const [messages, setMessages] = useState("")
+    useEffect(() => {
+        if (id) {
+            db.collection("rooms").doc(id).collection("messages").orderBy('timestamp', 'desc').onSnapshot(
+                snapshot => (
+                    setMessages(snapshot.docs.map((doc) =>
+                        doc.data()
+                    ))
+                )
+            )
+        } 
+    }, [id])
+
     useEffect(() => {
         Math.floor(
-            setSeed(Math.random() * 5000 )
+            setSeed(Math.random() * 5000)
         )
-    },[])
+    }, [])
 
     const createChat = () => {
         const roomName = prompt("Please enter name for chat")
 
-        if(roomName){
+        if (roomName) {
             // do some clever database stuff ... 
             db.collection('rooms').add({
                 name: roomName
@@ -25,21 +37,21 @@ function SideBarChat  ({id, name, addNewChat})  {
         }
     }
 
-    return !addNewChat ?  (
-        <Link to = {`/rooms/${id}`}>
-        <div className={styles.sidebarChat}>
-            <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
-            <div className={styles.SideBarChatInfo}>
-                <h2>{name}</h2>
-                <p>Last message...</p>
+    return !addNewChat ? (
+        <Link to={`/rooms/${id}`}>
+            <div className={styles.sidebarChat}>
+                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+                <div className={styles.SideBarChatInfo}>
+                    <h3>{name}</h3>
+                    <p>{messages[0]?.message}</p>
+                </div>
             </div>
-        </div>
         </Link>
     ) : (
         <div onClick={createChat}
-        className={styles.sidebarChat}
+            className={styles.sidebarChat}
         >
-            <h2>Add new Chat</h2>
+            <h3>Add new Chat</h3>
         </div>
     );
 };
